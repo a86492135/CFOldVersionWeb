@@ -1,0 +1,45 @@
+function attach(e,name,func,cap){if(e.addEventListener){e.addEventListener(name,func,cap);}else if(e.attachEvent){e.attachEvent('on'+name,func);}}
+attach(window,"load",function(){
+	var names = [["CF首页","CF活动"],["更多精彩活动"],["CF充值","CF会员"],["首页","新手指南","游戏下载","客服","论坛"]];
+	var urls = [["http://cf.qq.com/index.shtml","http://cf.qq.com/web200905/info/dl_game.htm"],["http://app.cf.qq.com/cgi-bin/CommAction/showaction.cgi?iPdName=14&iType=2"],["http://cf.qq.com/web200905/info/convert_cf.htm","http://cf.qq.com/comm-htdocs/vip/?t=cf"],["http://cf.qq.com","http://cf.qq.com/web200905/info/new_install.htm","http://cf.qq.com/web200905/info/dl_game.htm","http://service.qq.com/cgi-bin/communion?sid=823","http://cf.gamebbs.qq.com/"]];
+	var clicks = [["pgvSendClick({hottag:'act.title.logo'});","pgvSendClick({hottag:'act.title.pic'});"],["pgvSendClick({hottag:'act.title.more'});"],["pgvSendClick({hottag:'act.title.cz'});","pgvSendClick({hottag:'act.title.vip'});"],["pgvSendClick({hottag:'act.title.index'});","pgvSendClick({hottag:'act.title.xs'});","pgvSendClick({hottag:'act.title.dl'});","pgvSendClick({hottag:'act.title.kf'});","pgvSendClick({hottag:'act.title.bbs'});"]];
+	var styles = ["tgTBIcons","tgTBMore","tgTBPay","tgTBNavi"],parents = Array(),wpDiv = null,inner = null;
+	var checkCSS = function(){
+		if(wpDiv.offsetHeight == 42){
+			clearInterval(check);
+			for( var k=0;k<names.length;k++){
+				parents[k] = document.createElement("li");
+				creatLis(parents[k],names[k],urls[k],clicks[k]);
+				parents[k].className = styles[k];
+			}
+			parents[0].getElementsByTagName("a")[1].className = "tgTBIconsSec";
+			wpDiv.setAttribute("style","");
+		}
+	}
+	var creatLis = function(parent,words,thisLnk,thisClick){
+		var aes = Array(),texts = Array(),cdf = document.createDocumentFragment();
+		for(var j=0;j<words.length;j++){
+			aes[j] = document.createElement("a");
+			aes[j].setAttribute("href",thisLnk[j]);
+			aes[j].setAttribute("target","_blank");
+			aes[j].setAttribute("onclick",thisClick[j]);
+			texts[j] = document.createTextNode(words[j]);
+			aes[j].appendChild(texts[j]);
+			cdf.appendChild(aes[j]);
+		}
+		parent.appendChild(cdf);
+		inner.appendChild(parent);
+	};
+	var cssFile = document.createElement("link");
+	cssFile.setAttribute("href","http://ossweb-img.qq.com/images/js/top_js/cf_top.css");
+	cssFile.setAttribute("rel","stylesheet");
+	cssFile.setAttribute("type","text/css");
+	document.getElementsByTagName("head")[0].appendChild(cssFile);
+	wpDiv = document.createElement("div");
+	wpDiv.className = "tgTB2009";
+	inner = document.createElement("ul");
+	wpDiv.appendChild(inner); 
+	document.body.insertBefore(wpDiv,document.body.firstChild);
+	var check = setInterval(checkCSS,1);
+});
+/*  |xGv00|d954493408677d72262011bb2cc09e7f */
