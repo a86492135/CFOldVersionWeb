@@ -1,0 +1,23 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,p,blockquote,th,td{margin:0;padding:0;}
+table{border-collapse:collapse;border-spacing:0;font-size:inherit;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%; display:block; margin:0; padding:0;}
+q:before,q:after{content:'';}
+.c:after{ content:".";display:block;font-size:0;line-height:0;height:0;clear:both;visibility:hidden;} 
+.c{display: inline-table;}
+/* Hides from IE-mac \*/
+* html .c {height: 1%;}
+.c{display: block;}
+/* End hide from IE-mac */
+/* IE7 hack*/
+*+html .c {min-height: 1%;}
+.fl,.fr{ display:inline;}
+.fl{ float:left;}
+.fr{ float:right;}
+body{font-size:12px;font-family:Tahoma, Arial, Helvetica, sans-serif;}
+.act_content{ width:1000px; margin:0 auto; position:relative; z-index:1;}
+.indent_txt{overflow:hidden; text-indent:-999px;}
+.hidden_txt{ height:0; line-height:0; font-size:0; overflow:hidden;}/*  |xGv00|7bc8b7a5eb458db86b78f513e23c3177 */
